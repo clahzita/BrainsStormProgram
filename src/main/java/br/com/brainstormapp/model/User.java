@@ -1,13 +1,13 @@
 /**
  * 
  */
-package br.com.brainstormapp;
+package br.com.brainstormapp.model;
 
 /**
  * @author clah
  *
  */
-public abstract class IUser {
+public abstract class User {
 	
 	private String username;
 	private String fullname;

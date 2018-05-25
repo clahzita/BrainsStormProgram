@@ -1,13 +1,13 @@
 /**
  * 
  */
-package br.com.brainstormapp;
+package br.com.brainstormapp.model;
 
 /**
  * @author clah
  * @since 18.05.2018
  */
-public interface IStormConfig {
+public interface StormConfig {
 	
 	public boolean isAnonymous();
 	public boolean hasVoting();
