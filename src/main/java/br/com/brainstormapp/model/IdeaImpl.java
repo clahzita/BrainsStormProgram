@@ -6,8 +6,8 @@ package br.com.brainstormapp.model;
 import br.com.brainstormapp.exception.BusinessException;
 
 /**
- * @author clah
- *
+ * @author clarissa - clahzita@gmail.com
+ * @since 02.25.2018
  */
 public class IdeaImpl extends Idea {
 
@@ -28,6 +28,12 @@ public class IdeaImpl extends Idea {
 		}else {
 			super.getVoters().remove(voter);
 		}
+		
+	}
+
+	@Override
+	public void validate() {
+		// TODO Auto-generated method stub
 		
 	}
 	

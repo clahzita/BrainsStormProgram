@@ -8,29 +8,36 @@ package br.com.brainstormapp.model;
  *
  */
 public class StormConfigImpl implements StormConfig {
+	private boolean anonymous;
+	private boolean voting;
 
 	/* (non-Javadoc)
-	 * @see br.com.brainstormapp.model.IStormConfig#isAnonymous()
+	 * @see br.com.brainstormapp.model.StormConfig#isAnonymous()
 	 */
 	public boolean isAnonymous() {
-		// TODO Auto-generated method stub
-		return false;
+		return anonymous;
 	}
 
 	/* (non-Javadoc)
-	 * @see br.com.brainstormapp.model.IStormConfig#hasVoting()
+	 * @see br.com.brainstormapp.model.StormConfig#hasVoting()
 	 */
 	public boolean hasVoting() {
-		// TODO Auto-generated method stub
-		return false;
+		return voting;
 	}
 
 	/* (non-Javadoc)
-	 * @see br.com.brainstormapp.model.IStormConfig#votingLimit()
+	 * @see br.com.brainstormapp.model.StormConfig#votingLimit()
 	 */
 	public Integer votingLimit() {
-		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public void setAnonymous(boolean anonymous) {
+		this.anonymous = anonymous;
+	}
+
+	public void setHasVoting(boolean voting) {
+		this.voting = voting;
 	}
 
 }
