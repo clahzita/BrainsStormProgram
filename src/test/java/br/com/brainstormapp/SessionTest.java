@@ -7,6 +7,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.com.brainstormapp.model.Idea;
 import br.com.brainstormapp.model.Session;
 import br.com.brainstormapp.model.SessionPhase;
 import br.com.brainstormapp.model.User;
@@ -25,8 +26,7 @@ public class SessionTest {
   
    @Before
    public void setUp() {
-     User owner = new User("Fulano");
-     this.session = new Session(owner);   
+    
      participant1 = new User("joao");
    }
 
@@ -90,8 +90,40 @@ public class SessionTest {
 	  session.addParticipant(participant1);
 	  assertEquals(1, session.getParticipants().size());
 	  session.removeParticipant(participant1);
-	  assertEquals(0, session.getParticipants().size());
+	  assertTrue(session.getParticipants().isEmpty()); 
+  }
+  
+  @Test
+  public void addIdea(){
+	  //A lista de ideias é inalterada se a sessão não estiver na fase de brainstorm.
+	  session.addParticipant(participant1);
+	  Idea idea1 = new Idea(participant1, "Contar numero de participantes");
+	  session.addIdea(idea1);
+	  assertTrue(session.getIdeas().isEmpty());
+	  //A lista de ideias é inalterada se o autor da ideia não for uns dos participantes.
+	  session.nextPhase();
+	  User participant2 = new User("Jose");
+	  Idea idea2 = new Idea(participant2, "Contar numero de ideias");
+	  session.addIdea(idea2);
+	  assertTrue(session.getIdeas().isEmpty());
+	  //Caso contrário a lista de ideias recebe a ideia e seu tamanho é incrementado de 1.
+	  System.out.println(session.getPhase().toString());
+	  assertTrue(session.addIdea(idea1));
+	  assertEquals(1,session.getIdeas().size());
 	  
+	   
+  }
+  
+  @Test
+  public void rankideas() {
+	  session.addParticipant(participant1);
+	  Idea idea1 = new Idea(participant1, "Contar numero de participantes");
+	  session.addIdea(idea1);
+	  
+	  User participant2 = new User("Jose");
+	  session.addParticipant(participant2);
+	  Idea idea2 = new Idea(participant2, "Contar numero de ideias");
+	  session.addIdea(idea2);
 	  
   }
 }

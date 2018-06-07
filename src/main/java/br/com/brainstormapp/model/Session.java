@@ -9,11 +9,11 @@ import java.util.List;
 public class Session {
 
   private User owner;
-  String description;
-  SessionPhase phase;
-  int votingLimit = 3;
-  List<Idea> ideas;
-  List<User> participants;
+  private String description;
+  private SessionPhase phase;
+  public final int votingLimit = 3;
+  private List<Idea> ideas;
+  private List<User> participants;
 
   public Session(User owner) {
 	  this.setOwner(owner);
@@ -21,6 +21,22 @@ public class Session {
 	  this.ideas = new ArrayList<>();
 	  this.participants = new ArrayList<>();
   }
+  
+	/**
+	 * @return the owner
+	 */
+	public User getOwner() {
+		return owner;
+	}
+	
+	/**
+	 * @param owner the owner to set
+	 */
+	public void setOwner(User owner) {
+		this.owner = owner;
+	}
+	
+	
 
   public SessionPhase nextPhase() {
 	  if(this.phase != SessionPhase.RANK) {
@@ -34,7 +50,11 @@ public class Session {
   }
   
   public boolean addIdea(Idea idea) {
-    return false;
+	 if(this.phase == SessionPhase.BRAINSTORM && this.isParticipant(idea.getAuthor())) {
+		 System.out.println("ideia vai inseririr?");
+		 return this.ideas.add(idea);
+	 }
+	  return false;
   }
 
   public List<Idea> getIdeas() {
@@ -42,7 +62,14 @@ public class Session {
   }
 
   public List<Idea> rankIdeas() {
-    return null;
+	  List<Idea> rank = new ArrayList<>();
+	  for (Idea idea : rank) {
+		if(idea.countVotes()>0) {
+			rank.add(idea);
+		}
+	  }
+	 //TODO ordenar a lista de rank em ordem decrescente de número de votos
+    return rank;
   }
 
   public boolean addParticipant(User participant) {
@@ -56,23 +83,30 @@ public class Session {
   public boolean removeParticipant(User participant) {
     return participants.remove(participant);
   }
+  
+  public boolean isParticipant(User user) {
+	  if(this.participants.isEmpty() || this.participants == null) {
+		  return false;
+	  }
+	  
+	  System.out.println("oi");
+	  
+	  for (User participant : participants) {
+		  if(participant.getUsername().equals(user.getUsername())) {
+			  return true;
+		  }
+	}
+	  
+	  return false;
+  }
 
   public List<User> getParticipants() {
     return participants;
   }
 
-/**
- * @return the owner
- */
-public User getOwner() {
-	return owner;
-}
+  
 
-/**
- * @param owner the owner to set
- */
-public void setOwner(User owner) {
-	this.owner = owner;
-}
+	
+
 
 }

@@ -5,10 +5,11 @@ package br.com.brainstormapp.model;
  */
 public class User {
   private String username;
-  int votes;
+  private int votes;
 
   public User(String username) {
 	  this.setUsername(username);
+	  this.votes = 0;
   }
 
 /**
@@ -24,4 +25,13 @@ public String getUsername() {
 public void setUsername(String username) {
 	this.username = username;
 }
+
+public int getVotes() {
+	return votes;
+}
+
+public void setVotes(int votes) {
+	this.votes = votes;
+}
+
 }
