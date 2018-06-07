@@ -1,45 +1,27 @@
-/**
- * 
- */
 package br.com.brainstormapp.model;
 
-import br.com.brainstormapp.exception.BusinessException;
+/**
+ * User
+ */
+public class User {
+  private String username;
+  int votes;
+
+  public User(String username) {
+	  this.setUsername(username);
+  }
 
 /**
- * @author clarissa - clahzita@gmail.com
- *
+ * @return the username
  */
-public abstract class User {
-	
-	private String username;
-	private String fullname;
-	private String photoUrl;
-	
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	
-	public String getFullname() {
-		return fullname;
-	}
-	
-	public void setFullname(String fullname) {
-		this.fullname = fullname;
-	}
-	
-	public String getPhotoUrl() {
-		return photoUrl;
-	}
-	
-	public void setPhotoUrl(String photoUrl) {
-		this.photoUrl = photoUrl;
-	}
-	
-	public abstract void validate() throws BusinessException;
-	
-	
+public String getUsername() {
+	return username;
+}
 
+/**
+ * @param username the username to set
+ */
+public void setUsername(String username) {
+	this.username = username;
+}
 }
