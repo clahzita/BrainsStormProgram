@@ -7,10 +7,10 @@ import java.util.List;
  * Idea
  */
 public class Idea {
-  Session session;
-  String description;
-  User author;
-  List<User> voters;
+  private Session session;
+  private String description;
+  private User author;
+  private List<User> voters;
 
   public Idea(User author, String description) {
 	  this.author = author;
@@ -26,6 +26,10 @@ public class Idea {
 	this.session = session;
   }
   
+  public String getDescription() {
+	return description;
+  }
+  
   public List<User> getVoters() {
 	return voters;
   }
@@ -34,7 +38,7 @@ public class Idea {
 	  if(session.getPhase() == SessionPhase.VOTING
 			  && this.session.isParticipant(voter) 
 			  && !voter.getUsername().equals(this.author.getUsername()) 
-			  && voter.getVotes() <= this.session.votingLimit
+			  && voter.getVotes() < Session.VOTING_LIMIT
 			  && !this.alreadyIsVoter(voter)) {
 		  voter.setVotes(voter.getVotes()+1);
 		  voters.add(voter);
@@ -43,6 +47,9 @@ public class Idea {
   }
 
   public void reclaimVote(User voter) {
+	  if(alreadyIsVoter(voter) && this.session.getPhase() == SessionPhase.VOTING) {
+		  voters.remove(voter);
+	  }
 
   }
   

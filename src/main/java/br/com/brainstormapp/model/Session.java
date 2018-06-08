@@ -7,11 +7,12 @@ import java.util.List;
  * Session
  */
 public class Session {
-
+	static final int VOTING_LIMIT = 3;
+	
   private User owner;
   private String description;
   private SessionPhase phase;
-  public final int votingLimit = 3;
+  
   private List<Idea> ideas;
   private List<User> participants;
 
@@ -88,8 +89,6 @@ public class Session {
 	  if(this.participants.isEmpty() || this.participants == null) {
 		  return false;
 	  }
-	  
-	  System.out.println("oi");
 	  
 	  for (User participant : participants) {
 		  if(participant.getUsername().equals(user.getUsername())) {
