@@ -1,37 +1,47 @@
 package br.com.brainstormapp.model;
 
 /**
- * User
+ * This class implements the entity User, who is the person who uses the program.
  */
 public class User {
   private String username;
   private int votes;
 
   public User(String username) {
-	  this.setUsername(username);
-	  this.votes = 0;
+    this.setUsername(username);
+    this.votes = 0;
+  }
+  
+  /**
+   * Returns the user name.
+   * @return the user name.
+   */
+  public String getUsername() {
+    return username;
+  }
+  
+  /**
+   * Sets the user name.
+   * @param username the new user name to be set.
+   */
+  public void setUsername(String username) {
+    this.username = username;
   }
 
-/**
- * @return the username
- */
-public String getUsername() {
-	return username;
-}
+  /**
+   * Returns the amount of times the user voted on ideas.
+   * @return the number of votes that the user done.
+   */
+  public int getVotes() {
+    return votes;
+  }
 
-/**
- * @param username the username to set
- */
-public void setUsername(String username) {
-	this.username = username;
-}
-
-public int getVotes() {
-	return votes;
-}
-
-public void setVotes(int votes) {
-	this.votes = votes;
-}
+  /**
+   * Sets the number of votes.
+   * @param votes the number of votes to be set.
+   */
+  public void setVotes(int votes) {
+    this.votes = votes;
+  }
 
 }
